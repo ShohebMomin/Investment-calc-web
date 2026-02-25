@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function header() {
+export default function Header({id}) {
   return (
-    <header>
+    <header id={id}>
       <img src="/investment-calculator-logo.png" alt="logo" />
+      <h1>Investment Calculator</h1>
     </header>
   )
 }
