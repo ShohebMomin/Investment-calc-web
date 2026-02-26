@@ -34,25 +34,25 @@ function App() {
     <>
       <Header id="header" />
       <UserInput ><section className='input-group'>
-        <span>
+        <p>
           <label htmlFor="initial-investment">Initial Investment</label>
-          <input type="number" name='initial-investment' value={value['initial-investment']} onChange={inputHandler} />
-        </span>
-        <span>
+          <input type="number" name='initial-investment' required value={value['initial-investment']} onChange={inputHandler} />
+        </p>
+        <p>
           <label htmlFor="anual-investment">Anual Investment</label>
-          <input type="number" name='anual-investment' value={value['anual-investment']} onChange={inputHandler} />
-        </span>
+          <input type="number" name='anual-investment' required value={value['anual-investment']} onChange={inputHandler} />
+        </p>
       </section>
 
         <section className='input-group'>
-          <span>
+          <p>
             <label htmlFor="expected-return">Expected Return</label>
-            <input type="number" name='expected-return' value={value['expected-return']} onChange={inputHandler} />
-          </span>
-          <span>
+            <input type="number" name='expected-return' required value={value['expected-return']} onChange={inputHandler} />
+          </p>
+          <p>
             <label htmlFor="duration">Duration</label>
-            <input type="number" name='duration' value={value['duration']} onChange={inputHandler} />
-          </span>
+            <input type="number" name='duration' required value={value['duration']} onChange={inputHandler} />
+          </p>
         </section></UserInput>
 
       <ResultTable>
@@ -67,14 +67,14 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {data.map(data => 
-            <tr>
-              <td>{data.year}</td>
-              <td>{formatter.format(data.valueEndOfYear)}</td>
-              <td>{formatter.format(data.interest)}</td>
-              <td>{formatter.format(data.totalInterest)}</td>
-              <td>{formatter.format(data.investedCapital)}</td>
-            </tr>)}
+            {data.map(data =>
+              <tr>
+                <td>{data.year}</td>
+                <td>{formatter.format(data.valueEndOfYear)}</td>
+                <td>{formatter.format(data.interest)}</td>
+                <td>{formatter.format(data.totalInterest)}</td>
+                <td>{formatter.format(data.investedCapital)}</td>
+              </tr>)}
           </tbody>
         </table>
       </ResultTable>
