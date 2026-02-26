@@ -15,7 +15,7 @@ export default function ResultTable({ data }) {
 				</thead>
 				<tbody>
 					{data.map(data =>
-						<tr>
+						<tr key={data.year}>
 							<td>{data.year}</td>
 							<td>{formatter.format(data.valueEndOfYear)}</td>
 							<td>{formatter.format(data.interest)}</td>
