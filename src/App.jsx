@@ -7,13 +7,17 @@ import { calculateInvestmentResults } from './util/investment.js'
 
 function App() {
   const [userInput, setUserInput] = useState({
-    "initial-investment": "",
-    "anual-investment": "",
-    "expected-return": "",
-    "duration": ""
+    "initial-investment": 10000,
+    "anual-investment": 1000,
+    "expected-return": 7,
+    "duration": 12
   })
+  const isInputvalid = userInput.duration >= 1;
   function inputHandler(e) {
-    setUserInput({ ...userInput, [e.target.name]: Number(e.target.value) })
+    setUserInput(prev => ({
+      ...prev,
+      [e.target.name]: Number(e.target.value)
+    }));
   }
   const data = calculateInvestmentResults({
     initialInvestment: Number(userInput["initial-investment"]),
@@ -25,7 +29,9 @@ function App() {
     <>
       <Header id="header" />
       <UserInput onChange={inputHandler} userInput={userInput} />
-      <ResultTable data={data} />
+      {!isInputvalid && <p className='center'>Please Enter Duration Greater than Zero.</p>}
+      {isInputvalid && <ResultTable data={data} />}
+
     </>
   )
 }
